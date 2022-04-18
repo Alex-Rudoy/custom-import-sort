@@ -1,5 +1,6 @@
 {
   "name": "custom-import-sort",
+  "publisher": "AlexRudoy",
   "displayName": "Custom Import Sort",
   "description": "Allows you to customize and automate import sorting",
   "version": "0.0.1",
@@ -7,17 +8,68 @@
     "vscode": "^1.66.0"
   },
   "categories": [
-    "Other"
+    "Formatters"
   ],
   "activationEvents": [
-    "onCommand:custom-import-sort.sort-imports"
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "custom-import-sort.sort-imports",
-        "title": "Custom Import Sort"
+        "title": "Custom Import Sort",
+        "command": "customImportSort.sortImports"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "CustomImportSort",
+        "properties": {
+          "customImportSort.sortOnSave": {
+            "type": "boolean",
+            "default": true,
+            "description": "Sort imports on save"
+          },
+          "customImportSort.sortingSettings": {
+            "type": "array",
+            "default": [
+              {
+                "name": "libraries",
+                "regex": ".",
+                "importance": 0,
+                "lineafter": true
+              },
+              {
+                "name": "sameFolder",
+                "regex": "^\\.\\/",
+                "importance": 1,
+                "lineafter": false
+              },
+              {
+                "name": "aliases",
+                "regex": "^@",
+                "importance": 2,
+                "lineafter": true
+              },
+              {
+                "name": "types",
+                "regex": "\\.types(\\.tsx?)?$",
+                "importance": 3,
+                "lineafter": true
+              },
+              {
+                "name": "styles",
+                "regex": "\\.module\\.s?css$",
+                "importance": 3,
+                "lineafter": true
+              }
+            ],
+            "description": "How your imports should be sorted"
+          }
+        }
       }
     ]
   },
