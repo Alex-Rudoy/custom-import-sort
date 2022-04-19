@@ -1,5 +1,5 @@
-import * as vscode from "vscode";
 import { TConfig, TImportData } from "../types";
+import * as vscode from "vscode";
 
 export const sortImports = (text: string) => {
   // get config from settings.json if possible
@@ -11,13 +11,21 @@ export const sortImports = (text: string) => {
   const importLines: TImportData[] = [];
   const nonImportLines: string[] = [];
 
-  lines.forEach((line) => {
-    if (line.startsWith("import")) {
-      importLines.push({ line, path: line.split(/["']/)[1] });
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].startsWith("import")) {
+      let path = lines[i].split(/["']/)[1];
+      importLines.push({ line: lines[i], path });
+      while (!path) {
+        i++;
+        path = lines[i].split(/["']/)[1];
+        importLines[importLines.length - 1].line += `\n${lines[i]}`;
+        importLines[importLines.length - 1].path = path;
+      }
     } else {
-      nonImportLines.push(line);
+      nonImportLines.push(lines[i]);
     }
-  });
+  }
+  lines.forEach((line, i) => {});
 
   const linesMap = configArray.reduce((obj: Record<string, TImportData[]>, config) => {
     obj[config.name] = [];

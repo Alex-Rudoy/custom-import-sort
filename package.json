@@ -3,7 +3,7 @@
   "publisher": "AlexRudoy",
   "displayName": "Custom Import Sort",
   "description": "Allows you to customize and automate import sorting",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.66.0"
   },
@@ -20,7 +20,7 @@
   "contributes": {
     "commands": [
       {
-        "title": "Custom Import Sort",
+        "title": "Run Custom Import Sort",
         "command": "customImportSort.sortImports"
       }
     ],
@@ -43,15 +43,15 @@
                 "lineafter": true
               },
               {
-                "name": "sameFolder",
-                "regex": "^\\.\\/",
-                "importance": 1,
-                "lineafter": false
-              },
-              {
                 "name": "aliases",
                 "regex": "^@",
                 "importance": 2,
+                "lineafter": false
+              },
+              {
+                "name": "sameFolder",
+                "regex": "^\\.\\/?",
+                "importance": 1,
                 "lineafter": true
               },
               {
