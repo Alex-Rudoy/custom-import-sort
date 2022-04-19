@@ -1,9 +1,15 @@
 {
   "name": "custom-import-sort",
+  "author": "Alex Rudoy",
   "publisher": "AlexRudoy",
   "displayName": "Custom Import Sort",
   "description": "Allows you to customize and automate import sorting",
-  "version": "0.0.2",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alex-Rudoy/custom-import-sort"
+  },
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.66.0"
   },
@@ -30,44 +36,108 @@
         "properties": {
           "customImportSort.sortOnSave": {
             "type": "boolean",
-            "default": true,
-            "description": "Sort imports on save"
+            "description": "Sort imports on save",
+            "default": true
           },
           "customImportSort.sortingSettings": {
             "type": "array",
+            "description": "How your imports should be sorted",
             "default": [
               {
-                "name": "libraries",
+                "regex": "^react$",
+                "importance": 4
+              },
+              {
                 "regex": ".",
                 "importance": 0,
                 "lineafter": true
               },
               {
-                "name": "aliases",
-                "regex": "^@",
-                "importance": 2,
-                "lineafter": false
+                "regex": "^(@|[\\.\\.\\/]+)component",
+                "importance": 3
               },
               {
-                "name": "sameFolder",
-                "regex": "^\\.\\/?",
+                "regex": "^(@|[\\.\\.\\/]+)feature",
+                "importance": 3
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)table",
+                "importance": 3
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)layout",
+                "importance": 3
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)page",
+                "importance": 3
+              },
+              {
+                "regex": "^@",
+                "importance": 1
+              },
+              {
+                "regex": "^\\.\\/",
+                "importance": 1
+              },
+              {
+                "regex": "^\\.\\.\\/",
+                "importance": 2,
+                "lineafter": true
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)util",
+                "importance": 3
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)api",
+                "importance": 3
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)service",
+                "importance": 3
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)store",
+                "importance": 3
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)store.*\\/use",
+                "importance": 4
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)hook",
+                "importance": 3,
+                "lineafter": true
+              },
+              {
+                "regex": "const",
+                "importance": 1
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)rout",
+                "importance": 3
+              },
+              {
+                "regex": "^(@|[\\.\\.\\/]+)typings",
+                "importance": 3
+              },
+              {
+                "regex": "\\.types?(\\.tsx?)?$",
                 "importance": 1,
                 "lineafter": true
               },
               {
-                "name": "types",
-                "regex": "\\.types(\\.tsx?)?$",
-                "importance": 3,
+                "regex": "^\\.?\\.\\/.*\\.types(\\.tsx?)?$",
+                "importance": 4,
                 "lineafter": true
               },
               {
-                "name": "styles",
-                "regex": "\\.module\\.s?css$",
-                "importance": 3,
+                "regex": "\\.s?css$",
+                "importance": 4,
                 "lineafter": true
               }
-            ],
-            "description": "How your imports should be sorted"
+            ]
           }
         }
       }

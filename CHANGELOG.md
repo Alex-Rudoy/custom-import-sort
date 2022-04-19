@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.1.0]
+
+### Added
+
+- MIT License
+
+- Better default config
+
 ## [0.0.2]
 
 ### Added
