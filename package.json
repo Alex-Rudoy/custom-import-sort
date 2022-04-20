@@ -1,5 +1,6 @@
 {
   "name": "custom-import-sort",
+  "version": "0.1.1",
   "author": "Alex Rudoy",
   "publisher": "AlexRudoy",
   "displayName": "Custom Import Sort",
@@ -9,7 +10,6 @@
     "type": "git",
     "url": "https://github.com/Alex-Rudoy/custom-import-sort"
   },
-  "version": "0.1.0",
   "engines": {
     "vscode": "^1.66.0"
   },

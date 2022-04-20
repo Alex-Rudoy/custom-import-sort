@@ -16,10 +16,6 @@ export const getAndValidateConfig = (): TConfigWithId[] => {
       throw new Error(`Invalid config: Missing regex in item #${index}`);
     }
 
-    if (!item.importance) {
-      throw new Error(`Invalid config: Missing importance in item #${index}`);
-    }
-
     if (typeof item.regex !== "string") {
       throw new Error(
         `Invalid config: Regex must be a string in item #${index}`
