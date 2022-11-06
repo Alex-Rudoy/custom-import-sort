@@ -13,15 +13,17 @@ export function activate(context: vscode.ExtensionContext) {
         if (/^[jt]sx?$/.test(extension)) {
           const text = document.getText();
           const sortedText = sortImports(text);
-          editor.edit((editBuilder) => {
-            editBuilder.replace(
-              new vscode.Range(
-                new vscode.Position(0, 0),
-                new vscode.Position(document.lineCount, 0)
-              ),
-              sortedText
-            );
-          });
+          if (text !== sortedText) {
+            editor.edit((editBuilder) => {
+              editBuilder.replace(
+                new vscode.Range(
+                  new vscode.Position(0, 0),
+                  new vscode.Position(document.lineCount, 0)
+                ),
+                sortedText
+              );
+            });
+          }
         }
       }
     } catch (error) {
