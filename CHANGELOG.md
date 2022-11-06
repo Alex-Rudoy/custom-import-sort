@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.1.2]
+
+### Added
+
+- Comments now coupled with imports below them
+
 ## [0.1.0]
 
 ### Added
