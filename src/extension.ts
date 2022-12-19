@@ -70,7 +70,7 @@ export function activate(context: vscode.ExtensionContext) {
         .getConfiguration("customImportSort")
         .get("sortOnSave");
       if (sortOnSave) {
-        vscode.commands.executeCommand("customImportSort.sortImports");
+        vscode.commands.executeCommand("customImportSort.sortImportsPreservingComments");
       }
     })
   );

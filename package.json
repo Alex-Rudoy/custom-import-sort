@@ -28,6 +28,10 @@
       {
         "title": "Run Custom Import Sort",
         "command": "customImportSort.sortImports"
+      },
+      {
+        "title": "Run Custom Import Sort Preserving Comments",
+        "command": "customImportSort.sortImportsPreservingComments"
       }
     ],
     "configuration": [
