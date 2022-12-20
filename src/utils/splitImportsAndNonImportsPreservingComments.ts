@@ -12,7 +12,7 @@ export const splitImportsAndNonImportsPreservingComments = (
         line: `${lines[i]}`,
         path,
       });
-      
+
       // handle multi-line imports
       while (!path) {
         i++;
@@ -26,8 +26,6 @@ export const splitImportsAndNonImportsPreservingComments = (
   }
   return {
     importLines,
-    nonImportLines: [
-      ...nonImportLines,
-    ],
+    nonImportLines: [...nonImportLines],
   };
 };

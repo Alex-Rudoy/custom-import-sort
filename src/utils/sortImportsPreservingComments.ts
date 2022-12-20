@@ -1,5 +1,3 @@
-
-import { TConfig, TConfigWithId, TImportData } from "../types";
 import { getAndValidateConfig } from "./getAndValidateConfig";
 import { groupLines } from "./groupLines";
 import { joinMapToFlatArray } from "./joinMapToFlatArray";
@@ -8,7 +6,8 @@ import { splitImportsAndNonImportsPreservingComments } from "./splitImportsAndNo
 export const sortImportsPreservingComments = (text: string) => {
   const configArray = getAndValidateConfig();
   const lines = text.split("\n");
-  const { importLines, nonImportLines } = splitImportsAndNonImportsPreservingComments(lines);
+  const { importLines, nonImportLines } =
+    splitImportsAndNonImportsPreservingComments(lines);
   const linesMap = groupLines(importLines, configArray);
   const sortedImportLines = joinMapToFlatArray(linesMap, configArray);
   return [...sortedImportLines, ...nonImportLines]

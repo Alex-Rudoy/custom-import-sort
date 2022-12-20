@@ -12,6 +12,8 @@ Can be customized. It is just quite troublesome to do so.
 
 `customImportSort.sortOnSave`: check this to sort on save
 
+`customImportSort.sortOnSavePreservingComments`: check this to sort on save, while preserving comments in code. Note that in this case comments between imports are moved below imports block.
+
 `customImportSort.sortingSettings`: array of sorting groups
 
 Each sorting group should have:

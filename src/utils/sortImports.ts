@@ -1,5 +1,3 @@
-
-import { TConfig, TConfigWithId, TImportData } from "../types";
 import { getAndValidateConfig } from "./getAndValidateConfig";
 import { groupLines } from "./groupLines";
 import { joinMapToFlatArray } from "./joinMapToFlatArray";

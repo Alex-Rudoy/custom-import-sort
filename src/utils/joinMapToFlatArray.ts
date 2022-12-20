@@ -1,4 +1,3 @@
-
 import { TConfigWithId, TImportData } from "../types";
 
 export const joinMapToFlatArray = (

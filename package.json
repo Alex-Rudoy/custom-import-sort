@@ -43,6 +43,11 @@
             "description": "Sort imports on save",
             "default": true
           },
+          "customImportSort.sortOnSavePreservingComments": {
+            "type": "boolean",
+            "description": "Sort imports on save (preserving comments)",
+            "default": false
+          },
           "customImportSort.sortingSettings": {
             "type": "array",
             "description": "How your imports should be sorted",

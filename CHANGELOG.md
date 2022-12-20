@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.1.3]
+
+### Added
+
+- New command to preserve comments in code, while moving comments in imports below. Thanks to @MV88
+- New onSave option for this functionality
+
 ## [0.1.2]
 
 ### Added
