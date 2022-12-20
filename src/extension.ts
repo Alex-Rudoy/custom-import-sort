@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 
 import { sortImports } from "./utils/sortImports";
+import { sortImportsPreservingComments } from "./utils/sortImportsPreservingComments";
 
 export function activate(context: vscode.ExtensionContext) {
   vscode.commands.registerCommand("customImportSort.sortImports", () => {
@@ -32,6 +33,35 @@ export function activate(context: vscode.ExtensionContext) {
       }
     }
   });
+  vscode.commands.registerCommand("customImportSort.sortImportsPreservingComments", () => {
+    try {
+      const editor = vscode.window.activeTextEditor;
+      if (editor) {
+        const document = editor.document;
+        const fileName = document.fileName;
+        const extension = fileName.substring(fileName.lastIndexOf(".") + 1);
+        if (/^[jt]sx?$/.test(extension)) {
+          const text = document.getText();
+          const sortedText = sortImportsPreservingComments(text);
+          if (text !== sortedText) {
+            editor.edit((editBuilder) => {
+              editBuilder.replace(
+                new vscode.Range(
+                  new vscode.Position(0, 0),
+                  new vscode.Position(document.lineCount, 0)
+                ),
+                sortedText
+              );
+            });
+          }
+        }
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        vscode.window.showErrorMessage(error.message);
+      }
+    }
+  });
 
   // run customImportSort.sortImports on save if enabled
   context.subscriptions.push(
@@ -40,7 +70,7 @@ export function activate(context: vscode.ExtensionContext) {
         .getConfiguration("customImportSort")
         .get("sortOnSave");
       if (sortOnSave) {
-        vscode.commands.executeCommand("customImportSort.sortImports");
+        vscode.commands.executeCommand("customImportSort.sortImportsPreservingComments");
       }
     })
   );
