@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.0.0]
+
+### Changed
+
+- Comments inside non-import lines are now preserved as intended even in default sorting flow
+
+### Removed
+
+- Command to preserve comments
+
 ## [0.1.3]
 
 ### Added

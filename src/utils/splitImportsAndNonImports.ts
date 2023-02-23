@@ -6,13 +6,15 @@ export const splitImportsAndNonImports = (
   const importLines: TImportData[] = [];
   const nonImportLines: string[] = [];
   let commentLines = [];
+  let stopMovingComments = false;
+
   for (let i = 0; i < lines.length; i++) {
-    if (lines[i].startsWith("//")) {
+    if (lines[i].startsWith("//") && !stopMovingComments) {
       commentLines.push(lines[i] + "\n");
       continue;
     }
 
-    if (lines[i].startsWith("/*")) {
+    if (lines[i].startsWith("/*") && !stopMovingComments) {
       while (!lines[i].endsWith("*/")) {
         commentLines.push(lines[i] + "\n");
         i++;
@@ -38,6 +40,10 @@ export const splitImportsAndNonImports = (
       }
     } else {
       nonImportLines.push(lines[i]);
+
+      if (lines[i].trim() !== "") {
+        stopMovingComments = true;
+      }
     }
   }
   return {
