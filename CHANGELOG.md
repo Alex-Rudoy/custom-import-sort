@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.2]
+
+### Changed
+
+- Better comment handing on border between imports and non-imports
+
 ## [1.0.0]
 
 ### Changed

@@ -1,8 +1,8 @@
-import { TConfigWithId, TImportData } from "../types";
+import { TConfigWithId, TImportData } from '../types';
 
 export const groupLines = (
   importLines: TImportData[],
-  configArray: TConfigWithId[]
+  configArray: TConfigWithId[],
 ): Record<string, TImportData[]> => {
   const linesMap: Record<string, TImportData[]> = {};
 
@@ -12,7 +12,7 @@ export const groupLines = (
 
   importLines.forEach((importLine) => {
     for (let i = 0; i < importanceOrder.length; i++) {
-      if (RegExp(importanceOrder[i].regex, "i").test(importLine.path)) {
+      if (RegExp(importanceOrder[i].regex, 'i').test(importLine.path)) {
         if (!linesMap[importanceOrder[i].id]) {
           linesMap[importanceOrder[i].id] = [];
         }

@@ -1,14 +1,14 @@
-import * as vscode from "vscode";
+import * as vscode from 'vscode';
 
-import { TConfig, TConfigWithId } from "../types";
+import { TConfig, TConfigWithId } from '../types';
 
 export const getAndValidateConfig = (): TConfigWithId[] => {
   const baseConfig = vscode.workspace
-    .getConfiguration("customImportSort")
-    .get("sortingSettings") as TConfig[];
+    .getConfiguration('customImportSort')
+    .get('sortingSettings') as TConfig[];
 
   if (!(baseConfig instanceof Array)) {
-    throw new Error("Invalid config: config must be an array");
+    throw new Error('Invalid config: config must be an array');
   }
 
   baseConfig.forEach((item, index) => {
@@ -16,15 +16,15 @@ export const getAndValidateConfig = (): TConfigWithId[] => {
       throw new Error(`Invalid config: Missing regex in item #${index}`);
     }
 
-    if (typeof item.regex !== "string") {
+    if (typeof item.regex !== 'string') {
       throw new Error(
-        `Invalid config: Regex must be a string in item #${index}`
+        `Invalid config: Regex must be a string in item #${index}`,
       );
     }
 
-    if (typeof item.importance !== "number") {
+    if (typeof item.importance !== 'number') {
       throw new Error(
-        `Invalid config: Importance must be a number in item #${index}`
+        `Invalid config: Importance must be a number in item #${index}`,
       );
     }
 
@@ -32,7 +32,7 @@ export const getAndValidateConfig = (): TConfigWithId[] => {
       new RegExp(item.regex);
     } catch (error) {
       throw new Error(
-        `Invalid config: Invalid regex ${item.regex} in item #${index}`
+        `Invalid config: Invalid regex ${item.regex} in item #${index}`,
       );
     }
   });

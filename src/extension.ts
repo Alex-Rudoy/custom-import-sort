@@ -1,15 +1,15 @@
-import * as vscode from "vscode";
+import * as vscode from 'vscode';
 
-import { sortImports } from "./utils/sortImports";
+import { sortImports } from './utils/sortImports';
 
 export function activate(context: vscode.ExtensionContext) {
-  vscode.commands.registerCommand("customImportSort.sortImports", () => {
+  vscode.commands.registerCommand('customImportSort.sortImports', () => {
     try {
       const editor = vscode.window.activeTextEditor;
       if (editor) {
         const document = editor.document;
         const fileName = document.fileName;
-        const extension = fileName.substring(fileName.lastIndexOf(".") + 1);
+        const extension = fileName.substring(fileName.lastIndexOf('.') + 1);
         if (/^[jt]sx?$/.test(extension)) {
           const text = document.getText();
           const sortedText = sortImports(text);
@@ -18,9 +18,9 @@ export function activate(context: vscode.ExtensionContext) {
               editBuilder.replace(
                 new vscode.Range(
                   new vscode.Position(0, 0),
-                  new vscode.Position(document.lineCount, 0)
+                  new vscode.Position(document.lineCount, 0),
                 ),
-                sortedText
+                sortedText,
               );
             });
           }
@@ -36,18 +36,18 @@ export function activate(context: vscode.ExtensionContext) {
   // run customImportSort.sortImports on save if enabled
   context.subscriptions.push(
     vscode.workspace.onWillSaveTextDocument(() => {
-      const config = vscode.workspace.getConfiguration("customImportSort");
+      const config = vscode.workspace.getConfiguration('customImportSort');
 
-      if (config.get("sortOnSave")) {
-        vscode.commands.executeCommand("customImportSort.sortImports");
+      if (config.get('sortOnSave')) {
+        vscode.commands.executeCommand('customImportSort.sortImports');
       }
 
       if (config.sortOnSavePreservingComments) {
         vscode.commands.executeCommand(
-          "customImportSort.sortImportsPreservingComments"
+          'customImportSort.sortImportsPreservingComments',
         );
       }
-    })
+    }),
   );
 }
 

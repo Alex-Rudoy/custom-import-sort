@@ -1,4 +1,3 @@
-
 export type TConfig = {
   regex: string;
   importance: number;

@@ -1,7 +1,7 @@
-import { TImportData } from "../types";
+import { TImportData } from '../types';
 
 export const splitImportsAndNonImports = (
-  lines: string[]
+  lines: string[],
 ): { importLines: TImportData[]; nonImportLines: string[] } => {
   const importLines: TImportData[] = [];
   const nonImportLines: string[] = [];
@@ -9,24 +9,26 @@ export const splitImportsAndNonImports = (
   let stopMovingComments = false;
 
   for (let i = 0; i < lines.length; i++) {
-    if (lines[i].startsWith("//") && !stopMovingComments) {
-      commentLines.push(lines[i] + "\n");
+    if (lines[i].startsWith('//') && !stopMovingComments) {
+      commentLines.push(lines[i]);
       continue;
     }
 
-    if (lines[i].startsWith("/*") && !stopMovingComments) {
-      while (!lines[i].endsWith("*/")) {
-        commentLines.push(lines[i] + "\n");
+    if (lines[i].startsWith('/*') && !stopMovingComments) {
+      while (!lines[i].endsWith('*/')) {
+        commentLines.push(lines[i]);
         i++;
       }
-      commentLines.push(lines[i] + "\n");
+      commentLines.push(lines[i]);
       continue;
     }
 
-    if (lines[i].startsWith("import")) {
+    if (lines[i].startsWith('import')) {
       let path = lines[i].split(/["']/)[1];
       importLines.push({
-        line: `${commentLines.join("")}${lines[i]}`,
+        line: `${commentLines.join('\n')}${commentLines.length ? '\n' : ''}${
+          lines[i]
+        }`,
         path,
       });
       commentLines = [];
@@ -38,19 +40,16 @@ export const splitImportsAndNonImports = (
         importLines[importLines.length - 1].line += `\n${lines[i]}`;
         importLines[importLines.length - 1].path = path;
       }
-    } else {
+    } else if (stopMovingComments && lines[i].trim() === '') {
       nonImportLines.push(lines[i]);
-
-      if (lines[i].trim() !== "") {
-        stopMovingComments = true;
-      }
+    } else if (lines[i].trim() !== '') {
+      nonImportLines.push(lines[i]);
+      stopMovingComments = true;
     }
   }
+
   return {
     importLines,
-    nonImportLines: [
-      ...commentLines.map((line) => line.replace(/\n$/, "")),
-      ...nonImportLines,
-    ],
+    nonImportLines: [...commentLines, ...nonImportLines],
   };
 };
