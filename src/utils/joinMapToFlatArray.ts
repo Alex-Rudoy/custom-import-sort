@@ -7,18 +7,21 @@ export const joinMapToFlatArray = (
   const sortedImportLines: string[] = [];
 
   configArray.forEach((config) => {
-    const tempLines = [];
     if (linesMap[config.id]) {
       linesMap[config.id]
+        .slice()
         .sort((a, b) => a.path.localeCompare(b.path))
         .forEach((importLine) => {
-          tempLines.push(importLine.line);
+          sortedImportLines.push(importLine.line);
         });
     }
-    if (config.lineafter && tempLines.length > 0) {
-      tempLines.push('');
+    if (
+      config.lineafter &&
+      sortedImportLines.length &&
+      sortedImportLines[sortedImportLines.length - 1] !== ''
+    ) {
+      sortedImportLines.push('');
     }
-    sortedImportLines.push(...tempLines);
   });
   sortedImportLines.push('');
 

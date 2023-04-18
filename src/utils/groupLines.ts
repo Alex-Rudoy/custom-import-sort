@@ -11,12 +11,12 @@ export const groupLines = (
     .sort((a, b) => b.importance - a.importance);
 
   importLines.forEach((importLine) => {
-    for (let i = 0; i < importanceOrder.length; i++) {
-      if (RegExp(importanceOrder[i].regex, 'i').test(importLine.path)) {
-        if (!linesMap[importanceOrder[i].id]) {
-          linesMap[importanceOrder[i].id] = [];
+    for (const element of importanceOrder) {
+      if (RegExp(element.regex, 'i').test(importLine.path)) {
+        if (!linesMap[element.id]) {
+          linesMap[element.id] = [];
         }
-        linesMap[importanceOrder[i].id].push(importLine);
+        linesMap[element.id].push(importLine);
         return;
       }
     }

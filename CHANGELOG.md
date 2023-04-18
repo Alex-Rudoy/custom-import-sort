@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.3]
+
+### Fixed
+
+- Bug with absent linebreak if group was empty
+
 ## [1.0.2]
 
 ### Changed
