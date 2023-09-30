@@ -1,7 +1,7 @@
 export type TConfig = {
   regex: string;
   importance: number;
-  lineafter: boolean; // TODO: Matt rename lineAfter
+  lineAfter: boolean;
   groupLabel: string;
 };
 

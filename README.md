@@ -26,7 +26,7 @@ Each sorting group should have:
   If you have few rules that could target the same line,
   consider giving higher `importance` to more specific one
 
-- `"lineafter": true` - to add extra empty line after block
+- `"lineAfter": true` - to add extra empty line after block
 
 ## Development Instructions
 
@@ -34,5 +34,3 @@ Each sorting group should have:
 2. Run `npm i`.
 3. Install the VS Code extensions: [TypeScript + Webpack Problem Matchers](https://marketplace.visualstudio.com/items?itemName=amodio.tsl-problem-matcher).
 4. Press F5 to run and debug the extension in a new VS Code window.
-
-Test

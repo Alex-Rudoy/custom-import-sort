@@ -83,7 +83,7 @@
               {
                 "regex": ".",
                 "importance": 0,
-                "lineafter": true
+                "lineAfter": true
               },
               {
                 "regex": "^(@|[\\.\\.\\/]+)component",
@@ -116,7 +116,7 @@
               {
                 "regex": "^\\.\\.\\/",
                 "importance": 2,
-                "lineafter": true
+                "lineAfter": true
               },
               {
                 "regex": "^(@|[\\.\\.\\/]+)util",
@@ -141,7 +141,7 @@
               {
                 "regex": "^(@|[\\.\\.\\/]+)hook",
                 "importance": 3,
-                "lineafter": true
+                "lineAfter": true
               },
               {
                 "regex": "const",
@@ -158,17 +158,17 @@
               {
                 "regex": "\\.types?(\\.tsx?)?$",
                 "importance": 1,
-                "lineafter": true
+                "lineAfter": true
               },
               {
                 "regex": "^\\.?\\.\\/.*\\.types(\\.tsx?)?$",
                 "importance": 4,
-                "lineafter": true
+                "lineAfter": true
               },
               {
                 "regex": "\\.s?css$",
                 "importance": 4,
-                "lineafter": true
+                "lineAfter": true
               }
             ]
           }

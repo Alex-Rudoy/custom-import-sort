@@ -23,7 +23,7 @@ export const joinMapToFlatArray = (
       }
     }
     if (
-      config.lineafter &&
+      config.lineAfter &&
       tempGroup.length > 0
     ) {
       tempGroup.push('');
