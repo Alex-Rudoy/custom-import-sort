@@ -4,7 +4,7 @@ import { TConfig, TConfigWithId } from '../types';
 
 export const getAndValidateConfig = (): TConfigWithId[] => {
   const baseConfig = vscode.workspace
-    .getConfiguration('customImportSort')
+    .getConfiguration('groupSortImports')
     .get('sortingSettings') as TConfig[];
 
   if (!(baseConfig instanceof Array)) {

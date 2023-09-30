@@ -12,9 +12,9 @@ Can be customized. It is just quite hard to do so.
 
 ## Extension Settings
 
-`customImportSort.sortOnSave`: check this to sort on save
+`groupSortImports.sortOnSave`: check this to sort on save
 
-`customImportSort.sortingSettings`: array of sorting groups
+`groupSortImports.sortingSettings`: array of sorting groups
 
 Each sorting group should have:
 

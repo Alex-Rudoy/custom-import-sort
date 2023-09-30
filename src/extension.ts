@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 import { sortImports } from './utils/sortImports';
 
 export function activate(context: vscode.ExtensionContext) {
-  vscode.commands.registerCommand('customImportSort.sortImports', () => {
+  vscode.commands.registerCommand('groupSortImports.sortImports', () => {
     try {
       const editor = vscode.window.activeTextEditor;
       if (editor) {
@@ -33,18 +33,18 @@ export function activate(context: vscode.ExtensionContext) {
     }
   });
 
-  // run customImportSort.sortImports on save if enabled
+  // run groupSortImports.sortImports on save if enabled
   context.subscriptions.push(
     vscode.workspace.onWillSaveTextDocument(() => {
-      const config = vscode.workspace.getConfiguration('customImportSort');
+      const config = vscode.workspace.getConfiguration('groupSortImports');
 
       if (config.get('sortOnSave')) {
-        vscode.commands.executeCommand('customImportSort.sortImports');
+        vscode.commands.executeCommand('groupSortImports.sortImports');
       }
 
       if (config.sortOnSavePreservingComments) {
         vscode.commands.executeCommand(
-          'customImportSort.sortImportsPreservingComments',
+          'groupSortImports.sortImportsPreservingComments',
         );
       }
     }),
