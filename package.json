@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "author": "Alex Rudoy",
   "publisher": "AlexRudoy",
-  "displayName": "Custom Import Sort",
+  "displayName": "Group and Sort Imports",
   "description": "Allows you to customize and automate import sorting",
   "icon": "icon.png",
   "license": "MIT",
@@ -54,7 +54,7 @@
   "contributes": {
     "commands": [
       {
-        "title": "Run Custom Import Sort",
+        "title": "Group and Sort Imports",
         "command": "customImportSort.sortImports"
       }
     ],

@@ -7,22 +7,32 @@ export const joinMapToFlatArray = (
   const sortedImportLines: string[] = [];
 
   configArray.forEach((config) => {
+    let tempGroup: string[] = [];
     if (linesMap[config.id]) {
       linesMap[config.id]
         .slice()
         .sort((a, b) => a.path.localeCompare(b.path))
         .forEach((importLine) => {
-          sortedImportLines.push(importLine.line);
+          tempGroup.push(importLine.line);
         });
+    }
+    if (config.groupLabel && tempGroup.length > 0) {
+      const groupLabelString = `// ${config.groupLabel}`;
+      if (!tempGroup[0].includes(groupLabelString)) {
+        tempGroup.unshift(groupLabelString);
+      }
     }
     if (
       config.lineafter &&
-      sortedImportLines.length &&
-      sortedImportLines[sortedImportLines.length - 1] !== ''
+      tempGroup.length > 0
     ) {
-      sortedImportLines.push('');
+      tempGroup.push('');
     }
+
+    // Flatten tempGroup into sortedImportLines
+    sortedImportLines.push(...tempGroup);
   });
+
   sortedImportLines.push('');
 
   return sortedImportLines;
