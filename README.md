@@ -3,6 +3,8 @@
 Automatic import grouping and sorting extension for .jsx and .tsx files.
 Use with Prettier to avoid nasty behavior.
 
+A fork of Alex Rudoy's [custom-import-sort](https://github.com/Alex-Rudoy/custom-import-sort)
+
 ## Features
 
 Automatically groups import lines into blocks. Sorts the lines within each block alphabetically by import path.
