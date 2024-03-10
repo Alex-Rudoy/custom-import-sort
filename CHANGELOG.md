@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.4]
+
+### Added
+
+- ignore files that have `/* customImportSort:ignore */` in them (thanks @farukborann)
+
 ## [1.0.3]
 
 ### Fixed
