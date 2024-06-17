@@ -10,6 +10,8 @@ Can sort on save.
 
 Can be customized. It is just quite hard to do so.
 
+To avoid formatting the file, add `/* customImportSort:ignore */` to the file.
+
 ## Extension Settings
 
 `customImportSort.sortOnSave`: check this to sort on save
