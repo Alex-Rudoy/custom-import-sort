@@ -1,4 +1,4 @@
-import { TImportData } from '../types';
+import { ExcludeKeywords, TImportData } from '../types';
 
 export const splitImportsAndNonImports = (
   lines: string[],
@@ -23,7 +23,7 @@ export const splitImportsAndNonImports = (
       continue;
     }
 
-    if (lines[i].startsWith('import')) {
+    if (lines[i].startsWith('import') || ExcludeKeywords.some((keyword) => lines[i].includes(keyword))) {
       let path = lines[i].split(/["']/)[1];
       importLines.push({
         line: `${commentLines.join('\n')}${commentLines.length ? '\n' : ''}${
