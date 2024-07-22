@@ -9,7 +9,6 @@ export const sortImports = (text: string) => {
   const { importLines, nonImportLines } = splitImportsAndNonImports(lines);
   const linesMap = groupLines(importLines, configArray);
   const sortedImportLines = joinMapToFlatArray(linesMap, configArray);
-  console.log(sortedImportLines, nonImportLines);
   return [...sortedImportLines, ...nonImportLines]
     .filter((line, index, array) => line !== '' || line !== array[index + 1])
     .join('\n');
