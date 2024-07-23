@@ -1,4 +1,4 @@
-import { ExcludeKeywords, TConfigWithId, TImportData } from '../types';
+import { excludeKeywords, TConfigWithId, TImportData } from '../types';
 
 export const joinMapToFlatArray = (
   linesMap: Record<string, TImportData[]>,
@@ -12,11 +12,13 @@ export const joinMapToFlatArray = (
         .slice()
         .sort((a, b) => a.path.localeCompare(b.path))
         .forEach((importLine) => {
-          if(ExcludeKeywords.some((keyword) => importLine.line.includes(keyword))) {
+          if (
+            excludeKeywords.some((keyword) => importLine.line.includes(keyword))
+          ) {
             sortedImportLines.unshift(importLine.line);
             return;
           }
-          
+
           sortedImportLines.push(importLine.line);
         });
     }

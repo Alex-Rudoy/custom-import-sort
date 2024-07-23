@@ -10,4 +10,4 @@ export type TConfigWithId = TConfig & {
 
 export type TImportData = { line: string; path: string };
 
-export const ExcludeKeywords = [`'use strict'`, `'use client'`, `"use strict"`, `"use client"`];
+export const excludeKeywords = ['use strict', 'use client', 'use server'];

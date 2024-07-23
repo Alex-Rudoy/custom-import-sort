@@ -12,7 +12,9 @@ export function activate(context: vscode.ExtensionContext) {
         const extension = fileName.substring(fileName.lastIndexOf('.') + 1);
         if (/^[jt]sx?$/.test(extension)) {
           const text = document.getText();
-          if(text.includes('/* customImportSort:ignore */')) return;
+          if (text.includes('/* customImportSort:ignore */')) {
+            return;
+          }
 
           const sortedText = sortImports(text);
           if (text !== sortedText) {
