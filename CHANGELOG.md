@@ -1,10 +1,16 @@
 # Change Log
 
-## [1.0.5]
+## [1.0.6]
 
 ### Fixed
 
 - multiline comment issue when "\\\*" was not trimmed (thanks @Mettwurstler)
+
+## [1.0.5]
+
+### Added
+
+- exclude keywords like use client (thanks @farukborann)
 
 ## [1.0.4]
 
