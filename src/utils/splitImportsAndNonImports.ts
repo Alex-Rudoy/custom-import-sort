@@ -5,7 +5,7 @@ export const splitImportsAndNonImports = (
 ): { importLines: TImportData[]; nonImportLines: string[] } => {
   const importLines: TImportData[] = [];
   const nonImportLines: string[] = [];
-  let commentLines = [];
+  let commentLines: string[] = [];
   let stopMovingComments = false;
 
   for (let i = 0; i < lines.length; i++) {
@@ -15,7 +15,7 @@ export const splitImportsAndNonImports = (
     }
 
     if (lines[i].startsWith('/*') && !stopMovingComments) {
-      while (!lines[i].endsWith('*/')) {
+      while (!lines[i].trim().endsWith('*/') && i < lines.length) {
         commentLines.push(lines[i]);
         i++;
       }

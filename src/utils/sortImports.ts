@@ -10,6 +10,6 @@ export const sortImports = (text: string) => {
   const linesMap = groupLines(importLines, configArray);
   const sortedImportLines = joinMapToFlatArray(linesMap, configArray);
   return [...sortedImportLines, ...nonImportLines]
-    .filter((line, index, array) => line !== '' || line !== array[index + 1])
+    .filter((line, index, array) => !(!line && !array[index + 1])) // remove multiple empty lines in a row
     .join('\n');
 };

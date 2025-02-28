@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.5]
+
+### Fixed
+
+- multiline comment issue when "\\\*" was not trimmed (thanks @Mettwurstler)
+
 ## [1.0.4]
 
 ### Added
